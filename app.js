@@ -1,14 +1,10 @@
-// Load required modules
 const express = require('express');
 const helmet = require('helmet');
 
-// Create Express application
 const app = express();
 
-// Apply Helmet security headers
 app.use(helmet());
 
-// Define root route
 app.get('/', (req, res) => {
   res.send(`
     <!DOCTYPE html>
@@ -19,6 +15,7 @@ app.get('/', (req, res) => {
         body { font-family: Arial, sans-serif; margin: 40px; }
         h1 { color: #2c3e50; }
         li { margin: 10px 0; }
+        code { background: #f0f0f0; padding: 2px 5px; }
       </style>
     </head>
     <body>
@@ -35,17 +32,15 @@ app.get('/', (req, res) => {
         <li>Referrer-Policy</li>
       </ul>
       
-      <h3>Try inspecting headers with:</h3>
-      <code>curl -I https://${process.env.GITPOD_WORKSPACE_URL.replace('://', '://3000-')}</code>
+      <h3>Verify headers with:</h3>
+      <code>curl -I ${window.location.origin}</code>
     </body>
     </html>
   `);
 });
 
-// Start the server
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`✅ Server running on port ${PORT}`);
   console.log(`🔒 Security headers enabled via Helmet`);
-  console.log(`🌐 Open Preview: https://${PORT}-${process.env.GITPOD_WORKSPACE_URL.replace('https://', '')}`);
 });
