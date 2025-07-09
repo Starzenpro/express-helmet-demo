@@ -1,0 +1,13 @@
+{
+  "name": "express-helmet-demo",
+  "version": "1.0.0",
+  "description": "Express app with Helmet security headers",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "helmet": "3.21.3"
+  }
+}
